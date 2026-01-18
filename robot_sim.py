@@ -31,6 +31,21 @@ class Robot:
             self.true_x -= settings.ROBOT_SPEED * math.cos(rad)
             self.true_y -= settings.ROBOT_SPEED * math.sin(rad)
 
+        # Keep robot on screen (Collision with walls)
+        half_size = settings.ROBOT_SIZE / 2
+        
+        # X Bounds
+        if self.true_x < half_size:
+            self.true_x = half_size
+        elif self.true_x > settings.SCREEN_WIDTH - half_size:
+            self.true_x = settings.SCREEN_WIDTH - half_size
+            
+        # Y Bounds
+        if self.true_y < half_size:
+            self.true_y = half_size
+        elif self.true_y > settings.SCREEN_HEIGHT - half_size:
+            self.true_y = settings.SCREEN_HEIGHT - half_size
+
     def scan_for_tags(self, known_tags):
         """
         Simulates a camera. Returns a list of tags the robot can 'see'.

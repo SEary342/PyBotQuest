@@ -12,7 +12,7 @@ def main():
     font = pygame.font.SysFont("Arial", 18)
 
     # Create Robot in the center
-    robot = Robot(settings.SCREEN_WIDTH // 2, settings.SCREEN_HEIGHT // 2)
+    robot = Robot(settings.SCREEN_WIDTH // 4, settings.SCREEN_HEIGHT // 2)
 
     running = True
     while running:
@@ -63,7 +63,11 @@ def main():
         pygame.draw.rect(screen, settings.BLACK, (0, 0, settings.SCREEN_WIDTH, settings.SCREEN_HEIGHT), 5)
 
         # Center Line
-        pygame.draw.line(screen, settings.BLACK, (mid_x, 0), (mid_x, settings.SCREEN_HEIGHT), 2)
+        pygame.draw.line(screen, settings.BLACK, (mid_x, 0), (mid_x, settings.SCREEN_HEIGHT), 4)
+
+        # Mid-Alliance Lines
+        pygame.draw.line(screen, settings.BLACK, (mid_x // 2, 0), (mid_x // 2, settings.SCREEN_HEIGHT), 2)
+        pygame.draw.line(screen, settings.BLACK, (mid_x + mid_x // 2, 0), (mid_x + mid_x // 2, settings.SCREEN_HEIGHT), 2)
 
         # Draw Tags (The Maze Landmarks)
         for tag_id, (x, y) in settings.KNOWN_TAGS.items():
@@ -88,6 +92,10 @@ def main():
         # Draw UI
         info = font.render(debug_text, True, settings.BLACK)
         screen.blit(info, (10, 10))
+        
+        pos_text = f"({int(robot.true_x)}, {int(robot.true_y)})"
+        pos_info = font.render(pos_text, True, settings.BLACK)
+        screen.blit(pos_info, (10, 35))
         
         instr = font.render("Use Arrow Keys to Move. Blue Circle = Calculated Position", True, settings.BLUE)
         screen.blit(instr, (10, settings.SCREEN_HEIGHT - 30))
