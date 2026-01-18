@@ -32,18 +32,18 @@ FOV = 90
 # Format: ID: (x_position, y_position)
 KNOWN_TAGS = {
     # Blue Alliance Wall (Left)
-    1: (50, 150),
+    1: (50, 450),
     2: (50, 300),
-    3: (50, 450),
+    3: (50, 150),
     # Red Alliance Wall (Right)
-    4: (750, 150),
+    4: (750, 450),
     5: (750, 300),
-    6: (750, 450),
+    6: (750, 150),
     # Central Structure (The "Core")
     7: (350, 300),
     8: (450, 300),
-    9: (400, 250),
-    10: (400, 350)
+    9: (400, 350),
+    10: (400, 250)
 }
 
 # Tag Appearance

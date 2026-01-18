@@ -69,11 +69,12 @@ def main():
         for tag_id, (x, y) in settings.KNOWN_TAGS.items():
             # Draw Tag Square
             tag_color = settings.TAG_SPECIFIC_COLORS.get(tag_id, settings.DEFAULT_TAG_COLOR)
-            rect = pygame.Rect(x - 15, y - 15, 30, 30)
+            screen_y = settings.SCREEN_HEIGHT - y
+            rect = pygame.Rect(x - 15, screen_y - 15, 30, 30)
             pygame.draw.rect(screen, tag_color, rect)
             # Draw Tag ID
             text = font.render(str(tag_id), True, settings.WHITE)
-            screen.blit(text, (x - 5, y - 10))
+            screen.blit(text, (x - 5, screen_y - 10))
 
         # Draw Robot
         robot.draw(screen)
@@ -81,8 +82,8 @@ def main():
         # Draw Vision Lines (Visual feedback)
         for tag in visible_tags:
             pygame.draw.line(screen, settings.GRAY, 
-                             (robot.true_x, robot.true_y), 
-                             (tag['tx'], tag['ty']), 1)
+                             (robot.true_x, settings.SCREEN_HEIGHT - robot.true_y), 
+                             (tag['tx'], settings.SCREEN_HEIGHT - tag['ty']), 1)
 
         # Draw UI
         info = font.render(debug_text, True, settings.BLACK)

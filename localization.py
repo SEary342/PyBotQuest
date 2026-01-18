@@ -25,9 +25,7 @@ def calculate_position_from_tag(robot_heading, tag_x, tag_y, distance_to_tag, an
     # RobotX = TagX - (Distance * cos(angle))
     
     estimated_x = tag_x - (distance_to_tag * math.cos(absolute_angle_rad))
-    estimated_y = tag_y + (distance_to_tag * math.sin(absolute_angle_rad)) 
-    # Note: In Pygame, Y grows downwards, so we might flip signs depending on coordinate system.
-    # For standard Cartesian, it's usually Y - ... but screen coords are inverted.
-    # Let's stick to standard screen logic: Y increases going down.
+    estimated_y = tag_y - (distance_to_tag * math.sin(absolute_angle_rad)) 
+    # Note: We are using Standard Cartesian Coordinates (0,0 is Bottom Left).
     
     return estimated_x, estimated_y
