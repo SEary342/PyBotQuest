@@ -1,6 +1,7 @@
 import pygame
 import sys
 import settings
+import Field
 from robot_sim import Robot
 from localization import calculate_position_from_tag
 
@@ -26,7 +27,7 @@ def main():
 
         # 2. Simulation Logic (The "Camera")
         # Get data about tags we can see
-        visible_tags = robot.scan_for_tags(settings.KNOWN_TAGS)
+        visible_tags = robot.scan_for_tags(Field.KNOWN_TAGS)
 
         # 3. Student Logic (Localization)
         # If we see tags, let's try to calculate where we are!
@@ -70,9 +71,9 @@ def main():
         pygame.draw.line(screen, settings.BLACK, (mid_x + mid_x // 2, 0), (mid_x + mid_x // 2, settings.SCREEN_HEIGHT), 2)
 
         # Draw Tags (The Maze Landmarks)
-        for tag_id, (x, y) in settings.KNOWN_TAGS.items():
+        for tag_id, (x, y) in Field.KNOWN_TAGS.items():
             # Draw Tag Square
-            tag_color = settings.TAG_SPECIFIC_COLORS.get(tag_id, settings.DEFAULT_TAG_COLOR)
+            tag_color = Field.TAG_SPECIFIC_COLORS.get(tag_id, Field.DEFAULT_TAG_COLOR)
             screen_y = settings.SCREEN_HEIGHT - y
             rect = pygame.Rect(x - 15, screen_y - 15, 30, 30)
             pygame.draw.rect(screen, tag_color, rect)
