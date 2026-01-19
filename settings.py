@@ -23,6 +23,6 @@ ROTATION_SPEED = 3
 
 # SENSOR SETTINGS
 # How far the robot can "see" a tag (in pixels)
-MAX_DETECTION_DISTANCE = 200 
+MAX_DETECTION_DISTANCE = 200
 # Field of view (in degrees)
-FOV = 90 
+FOV = 90

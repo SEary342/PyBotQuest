@@ -16,7 +16,7 @@ KNOWN_TAGS = {
     7: (550, 300),
     8: (650, 300),
     9: (600, 350),
-    10: (600, 250)
+    10: (600, 250),
 }
 
 # Tag Appearance
@@ -31,5 +31,5 @@ TAG_SPECIFIC_COLORS = {
     7: settings.DARK_BLUE,
     8: settings.RED,
     9: settings.DARK_GREY,
-    10: settings.DARK_GREY
+    10: settings.DARK_GREY,
 }
